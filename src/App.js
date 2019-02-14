@@ -88,6 +88,22 @@ class App extends Component {
           }
           </fieldset>
 
+          <fieldset>
+            <legend>Addresses</legend>
+            {this.props.values.addresses.map((address, addressIndex) => {
+              const addressName = `addresses[${addressIndex}].address.street`;
+              return (
+                <div key={addressIndex}>
+                  {renderInput({
+                    name: addressName,
+                    props: this.props,
+                    placeholder: `street ${addressIndex}`
+                  })}
+                </div>
+              )
+            })}
+          </fieldset>
+
           <button type={'submit'}>
             submit
           </button>
@@ -135,6 +151,18 @@ const formikConfig = {
         {
           name: 'Walter'
         }
+      ],
+      addresses: [
+        {
+          address: {
+            street: ''
+          }
+        },
+        {
+          address: {
+            street: '33c'
+          }
+        }
       ]
     }
   },
@@ -161,11 +189,16 @@ const formikConfig = {
     },
     validItems: {
       name: [required('please enter name for validItems')],
+    },
+    addresses: {
+      address: {
+        street: [required('please enter street')]
+      }
     }
   }),
   handleSubmit: (values, formikBag) => {
     console.log('handleSubmit', { values });
   }
-}
+};
 
 export default withFormik(formikConfig)(App);
