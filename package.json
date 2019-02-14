@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "formik": "1.5.0",
+    "formik-validators": "https://github.com/ngothanhtai/formik-validators.git#refactor/use-evolve",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-scripts": "2.1.5"
